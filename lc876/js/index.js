@@ -15,20 +15,15 @@ function ListNode(val, next) {
     this.next = (next===undefined ? null : next)
 }
 var middleNode = function(head) {
-	let acc = new Array()
+	let a = b = head
 
-	if(head == null) {
-		return arrToLList(acc.reverse())
-	} else {
-		let x = head
-		while(x != null) {
-			acc.push(x.val)
-			x = x.next
-		}
-		// get mid
-		return arrToLList(acc.slice(Math.floor(acc.length / 2)).reverse())
+	while(b != null && b.next != null) {
+		b = b.next.next
+		a = a.next
 	}
-};
+
+	return a
+}
 
 function arrToLList(arr) {
 	return arr.reduce((acc, c) => {
