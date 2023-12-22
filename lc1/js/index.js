@@ -1,24 +1,19 @@
-/**
+	/**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-	let map = new Map()
-	let ct = 0
-
-	for(num of nums) {
-		x = target - num
-
-		if(map.get(x) === undefined) {
-			map.set(num, ct);
-			ct += 1;
+	let map = new Map()	
+	for(let i = 0; i < nums.length; i++) {
+		let key = target - nums[i]
+		if (map.has(key)) {
+			return [map.get(key), i];
 		} else {
-			return [map.get(x), ct]
+			map.set(nums[i], i)
 		}
 	}
-
-	return [];
+	return []
 };
 
 module.exports = twoSum
